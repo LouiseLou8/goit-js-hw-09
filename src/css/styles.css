@@ -14,3 +14,56 @@
 
 @import url('./badges.css');
 @import url('./back-link.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+img {
+  object-fit: cover;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 1140px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.gallery-item {
+  position: relative;
+
+  height: 200px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease;
+
+  width: 360px;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+.gallery-item:focus {
+  transform: scale(1.05);
+}
+@media (max-width: 1200px) {
+  .gallery-item {
+    width: calc((100% - 48px) / 3);
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-item {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-item {
+    width: 100%;
+  }
+}
