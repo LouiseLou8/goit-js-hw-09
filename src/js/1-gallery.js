@@ -67,15 +67,14 @@ const gallery = document.querySelector('.gallery');
 
 function imageTamplate(image) {
   return `<li class="gallery-item">
-    <a class="gallery-link" href="${image.original}">
-      <img
-        class="gallery-image"
-        src="${image.preview}"
-        alt='${image.description}'
-      />
-      
-    </a>
-  </li>`;
+	<a class="gallery-link" href="${image.original}" title="${image.description}">
+		<img 
+		  class="gallery-image" 
+		  src="${image.preview}" 
+		  alt="${image.description}" 
+		/>
+	</a>
+</li>`;
 }
 
 function imagesTamplate(images) {
@@ -90,18 +89,10 @@ renderImages();
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const lightbox = new SimpleLightbox('.gallery a', {});
-
-lightbox.on('show.simplelightbox', () => {
-  const captions = document.querySelectorAll('.gallery-caption');
-  captions.forEach(caption => {
-    caption.style.transition = 'opacity 0.25s';
-    caption.style.opacity = '0';
-  });
-
-  setTimeout(() => {
-    captions.forEach(caption => {
-      caption.style.opacity = '1';
-    });
-  }, 250);
+const lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionSelector: 'self',
+  captionType: 'attr',
+  captionsData: 'title',
+  captionDelay: 250,
 });
